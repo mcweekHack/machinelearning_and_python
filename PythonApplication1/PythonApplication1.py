@@ -4,7 +4,7 @@ import dataset
 import mpl_toolkits.mplot3d as  A3D
 import datam
 #*******************************
-[x,y,z] = datam.Get_data(100)
+[x,y,z] = datam.Get_data(10)
 fig = plt.figure("mark")
 ax = A3D.Axes3D(fig)
 ax.set_xlabel("x-bar")

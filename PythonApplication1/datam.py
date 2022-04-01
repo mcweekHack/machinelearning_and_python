@@ -6,5 +6,5 @@ def Get_data(counts):
     zs = []
     for x in range(counts*counts):
         ys.append(np.random.rand())
-        zs.append(xs[x]*1.2+ys[x]*2.5+np.random.rand()*5)
+        zs.append(xs[x]*1.2+ys[x]*2.5+np.random.rand()*0.75)
     return xs,ys,zs
