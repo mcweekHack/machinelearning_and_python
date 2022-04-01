@@ -4,7 +4,7 @@ import mpl_toolkits.mplot3d as  A3D
 import datam
 from matplotlib import cm
 #------------------------------------------------
-def Spot_map_Create(x,y,z):#ÏÔÊ¾Êý¾Ý¼¯º¯Êý
+def Spot_map_Create(x,y,z):#ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ý¼ï¿½ï¿½ï¿½ï¿½ï¿½
     fig = plt.figure("data set")
     ax = A3D.Axes3D(fig)
     ax.set_xlabel("x-bar")
@@ -12,7 +12,7 @@ def Spot_map_Create(x,y,z):#ÏÔÊ¾Êý¾Ý¼¯º¯Êý
     ax.set_zlabel("z-bar")
     ax.scatter(x,y,z)
     return fig
-def equation_Create(x1,y1,z1):#Á½²ÎÊý´ú¼Ûº¯ÊýÉú³É(ÊÊÓÃÓÚ¹ýÁãµãµÄÊý¾Ý¼¯)
+def equation_Create(x1,y1,z1):#ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ûºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¼ï¿½)
     val1 = sum(x1*x1)
     val2 = sum(y1*y1)
     val3 = sum(z1*z1)
@@ -31,7 +31,7 @@ def equation_Create(x1,y1,z1):#Á½²ÎÊý´ú¼Ûº¯ÊýÉú³É(ÊÊÓÃÓÚ¹ýÁãµãµÄÊý¾Ý¼¯)
     axe.set_zlabel("disparity")
     axe.plot_surface(xs,ys,equation,rstride = 1,cstride = 1,cmap = cm.coolwarm)
     return fig
-def equation_task(x1,y1,z1,Acceptance):#·µ»ØÁ½¸öÎ´Öª²ÎÊýµÄÖµ,Acceptance±íÊ¾¾«¶È
+def equation_task(x1,y1,z1,Acceptance):#ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´Öªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ,Acceptanceï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
     Alpha = 0.05
     val1 = sum(x1*x1)
     val2 = sum(y1*y1)
@@ -45,14 +45,14 @@ def equation_task(x1,y1,z1,Acceptance):#·µ»ØÁ½¸öÎ´Öª²ÎÊýµÄÖµ,Acceptance±íÊ¾¾«¶È
     track1 = 0
     traack2 = 0
     while  (xs*xs*val1+2*xs*ys*val1_val2+ys*ys*val2-2*xs*val3_val1-2*ys*val3_val2+val3)/(2*length[0])>Acceptance:
-        track = xs - Alpha*(xs*val1+ys*val1_val2-val3_val1)/length[0]
+        track1 = xs - Alpha*(xs*val1+ys*val1_val2-val3_val1)/length[0]
         track2 = ys - Alpha*(ys*val2+xs*val1_val2-val3_val2)/length[0]
         xs = track1
         ys = track2
-        print("analysing...")
+        print("analysing...",xs,ys)
     print("The model's parameter:",xs,ys)
     return xs,ys
-def map_Create_Fun(x2,y2):#»­³öÒ»¸ö¶þÔª1´Î·½³Ì,¼´ÑéÖ¤½á¹û
+def map_Create_Fun(x2,y2):#ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ôª1ï¿½Î·ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½
     xs = np.arange(-10,10,1)
     ys = np.arange(-10,10,1)
     xs,ys = np.meshgrid(xs,ys)
