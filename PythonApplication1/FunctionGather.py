@@ -32,7 +32,7 @@ def equation_Create(x1,y1,z1):#两参数代价函数生成(适用于过零点的数据集)
     axe.plot_surface(xs,ys,equation,rstride = 1,cstride = 1,cmap = cm.coolwarm)
     return fig
 def equation_task(x1,y1,z1,Acceptance):#返回两个未知参数的值,Acceptance表示精度
-    Alpha = 0.1
+    Alpha = 0.05
     val1 = sum(x1*x1)
     val2 = sum(y1*y1)
     val3 = sum(z1*z1)
@@ -40,11 +40,11 @@ def equation_task(x1,y1,z1,Acceptance):#返回两个未知参数的值,Acceptance表示精度
     val3_val1 = sum(z1*x1)
     val3_val2 = sum(z1*y1)
     length = x1.shape
-    xs = 1
-    ys = 1
+    xs = 0
+    ys = 0
     track1 = 0
     traack2 = 0
-    while  abs((xs*xs*val1+2*xs*ys*val1_val2+ys*ys*val2-2*xs*val3_val1-2*ys*val3_val2+val3)/(2*length[0]))>Acceptance:
+    while  (xs*xs*val1+2*xs*ys*val1_val2+ys*ys*val2-2*xs*val3_val1-2*ys*val3_val2+val3)/(2*length[0])>Acceptance:
         track = xs - Alpha*(xs*val1+ys*val1_val2-val3_val1)/length[0]
         track2 = ys - Alpha*(ys*val2+xs*val1_val2-val3_val2)/length[0]
         xs = track1
