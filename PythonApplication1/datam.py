@@ -6,7 +6,7 @@ def Get_data(counts,value):#生成数据集
     zs = []
     for x in range(counts*counts):
         ys.append(np.random.rand())
-        zs.append(xs[x]*1.5+ys[x]*2.5+np.random.rand()*0.75+value)
+        zs.append(xs[x]*5+ys[x]*7.5+np.random.rand()*0.75+value)
     ys = np.array(ys)
     zs = np.array(zs)
     return xs,ys,zs
