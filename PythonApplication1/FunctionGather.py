@@ -4,7 +4,8 @@ import mpl_toolkits.mplot3d as  A3D
 import datam
 from matplotlib import cm
 #------------------------------------------------
-def Spot_map_Create(x,y,z):#��ʾ���ݼ�����
+#散点图生成
+def Spot_map_Create(x,y,z):
     fig = plt.figure("data set")
     ax = A3D.Axes3D(fig)
     ax.set_xlabel("x-bar")
@@ -12,7 +13,8 @@ def Spot_map_Create(x,y,z):#��ʾ���ݼ�����
     ax.set_zlabel("z-bar")
     ax.scatter(x,y,z)
     return fig
-def equation_Create(x1,y1,z1):#���������ۺ�������(�����ڹ��������ݼ�)
+#代价函数生成
+def equation_Create(x1,y1,z1):
     val1 = sum(x1*x1)
     val2 = sum(y1*y1)
     val3 = sum(z1*z1)
@@ -31,7 +33,8 @@ def equation_Create(x1,y1,z1):#���������ۺ�������
     axe.set_zlabel("disparity")
     axe.plot_surface(xs,ys,equation,rstride = 1,cstride = 1,cmap = cm.coolwarm)
     return fig
-def equation_task(x1,y1,z1,Acceptance):#��������δ֪������ֵ,Acceptance��ʾ����
+#梯度下降,Acceptance精度
+def equation_task(x1,y1,z1,Acceptance):
     Alpha = 0.05
     val1 = sum(x1*x1)
     val2 = sum(y1*y1)
@@ -49,10 +52,10 @@ def equation_task(x1,y1,z1,Acceptance):#��������δ֪����
         track2 = ys - Alpha*(ys*val2+xs*val1_val2-val3_val2)/length[0]
         xs = track1
         ys = track2
-        print("analysing...",xs,ys)
     print("The model's parameter:",xs,ys)
     return xs,ys
-def map_Create_Fun(x2,y2):#����һ����Ԫ1�η���,����֤���
+#函数生成
+def map_Create_Fun(x2,y2):
     xs = np.arange(-10,10,1)
     ys = np.arange(-10,10,1)
     xs,ys = np.meshgrid(xs,ys)
@@ -64,3 +67,20 @@ def map_Create_Fun(x2,y2):#����һ����Ԫ1�η���,���
     axe.set_zlabel("res-value")
     axe.plot_surface(xs,ys,equation,rstride = 1,cstride = 1)
     return 0
+#梯度下降优化算法,Acceptance为精度
+def equation_Task_up(x1,y1,z1,Acceptance):
+    Alpha = 0.01
+    theta = np.array(0)
+    theta = np.append(theta,0)
+    data = np.array([x1,y1])
+    data = data.transpose()
+    length = x1.shape[0]
+    pic = data@theta.transpose()-z1.transpose()
+    cost = pic@pic.transpose()/(2*length)
+    while cost > Acceptance:
+        theta = theta - (data.transpose()@(data@theta.transpose()-z1.transpose()))*Alpha/length
+        pic = data@theta.transpose()-z1.transpose()
+        cost = pic@pic.transpose()/(2*length)
+        theta = theta.transpose()
+    print("The model's parameter：",theta)
+    return theta
