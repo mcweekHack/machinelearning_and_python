@@ -54,7 +54,7 @@ def equation_task(x1,y1,z1,Acceptance):
         ys = track2
     print("The model's parameter:",xs,ys)
     return xs,ys
-#函数生成
+#结果函数生成
 def map_Create_Fun(x2,y2):
     xs = np.arange(-10,10,1)
     ys = np.arange(-10,10,1)
@@ -84,13 +84,18 @@ def equation_Task_up(x1,y1,z1,Acceptance):
         theta = theta.transpose()
     print("The model's parameter：",theta)
     return theta
-#新版散点图显示函数
-def Dot_map(map_data):
+#通用散点图显示函数,只支持三维显示,三维以上只显示前三个参数
+def Dot_map(map_data,res):
     map_ = map_data.transpose()
     fig = plt.figure("data set")
     ax = A3D.Axes3D(fig)
     ax.set_xlabel("x-bar")
     ax.set_ylabel("y-bar")
     ax.set_zlabel("z-bar")
-    ax.scatter(map_[0],map_[1],map_[2])
+    ax.scatter(map_[0],map_[1],res)
     return fig
+#通用梯度优化生成函数,number为未知参数个数,data_为数据集,Acceptance为精度
+def gradient_descent(number,data_,Acceptance):
+    res = np.zeros(number+1,1)
+
+    return 0

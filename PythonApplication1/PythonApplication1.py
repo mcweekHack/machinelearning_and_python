@@ -13,7 +13,3 @@ from matplotlib import cm
 #a,b = Fun.equation_Task_up(x,y,z,0.05)#优化的梯度下降
 #Fun.map_Create_Fun(a,b)
 #plt.show()#输出
-[x,y,z] = datam.Get_Pro_data(500,2,1)
-print(y)
-Fun.Dot_map(y)
-plt.show()
