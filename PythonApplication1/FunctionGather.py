@@ -84,3 +84,13 @@ def equation_Task_up(x1,y1,z1,Acceptance):
         theta = theta.transpose()
     print("The model's parameter：",theta)
     return theta
+#新版散点图显示函数
+def Dot_map(map_data):
+    map_ = map_data.transpose()
+    fig = plt.figure("data set")
+    ax = A3D.Axes3D(fig)
+    ax.set_xlabel("x-bar")
+    ax.set_ylabel("y-bar")
+    ax.set_zlabel("z-bar")
+    ax.scatter(map_[0],map_[1],map_[2])
+    return fig

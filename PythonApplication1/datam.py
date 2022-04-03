@@ -10,20 +10,16 @@ def Get_data(counts,value):
     ys = np.array(ys)
     zs = np.array(zs)
     return xs,ys,zs
-#生成高维数据集
+#生成高维数据集,Unknown是未知参数,data_是数据集,theta.transpose()是实际参数
 def Get_Pro_data(num,Unknown,value):
-    data_ = []
-    part = np.array([])
-    theta = np.random.rand(Unknown)
-    value = 0
-    for i in range(Unknown):
-        for i2 in range(num):
-            val = np.random.rand()
-            part = np.append(part,val)
-        data_.append(part)
-    data_ = np.array(data_)
-    res = data_.transpose()@theta.transpose
-    res = res.transpose()
-    data_ = np.append(data_,res,axis = 0)
-    data_ = data_.transpose()
-    return num, data_, theta
+    data_ = np.zeros((num,Unknown))
+    theta = np.random.randint(1,10,(Unknown,1))
+    res = np.array([])
+    for x1 in range(Unknown):
+        for x2 in range(num):
+            data_[x2][x1] = np.random.rand()
+    res = data_@theta + value
+    data_ = np.append(data_,res,axis = 1)
+    for x3 in range(num):
+        data_[x3][Unknown]+=np.random.rand()*1.75
+    return Unknown,data_, theta.transpose()
