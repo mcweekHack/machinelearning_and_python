@@ -94,8 +94,17 @@ def Dot_map(map_data,res):
     ax.set_zlabel("z-bar")
     ax.scatter(map_[0],map_[1],res)
     return fig
-#通用梯度优化生成函数,number为未知参数个数,data_为数据集,Acceptance为精度
-def gradient_descent(number,data_,Acceptance):
-    res = np.zeros(number+1,1)
-
-    return 0
+#通用梯度优化生成函数,number为未知参数个数,data_为数据集,Acceptance为精度,res为结果,theta是结果
+def gradient_descent(number,data_,res,Acceptance):
+    Alpha = 0.05
+    length = data_.shape[0]
+    theta = np.zeros((number+1,1))
+    onet_ = np.ones((length,1))
+    data_ = np.append(data_,onet_,axis = 1)
+    h = data_@theta-res.transpose()
+    h2 = sum(h*h)/(2*length)
+    while h2[0]>Acceptance:
+        theta = theta -(data_.transpose()@(data_@theta - res.transpose()))*Alpha/length
+        h = data_@theta-res.transpose()
+        h2 = sum(h*h)/(2*length)
+    return theta
