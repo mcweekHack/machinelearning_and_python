@@ -108,3 +108,16 @@ def gradient_descent(number,data_,res,Acceptance):
         h = data_@theta-res.transpose()
         h2 = sum(h*h)/(2*length)
     return theta
+#通用结果函数生成,仅适用于三维
+def Result_show(x1,y1,mark):
+    xs = np.arange(-10,10,1)
+    ys = np.arange(-10,10,1)
+    xs,ys = np.meshgrid(xs,ys)
+    equation = xs*x2+ys*y2 + mark
+    fig = plt.figure("Prediction function")
+    axe = A3D.Axes3D(fig)
+    axe.set_xlabel("x1-value")
+    axe.set_ylabel("x2-value")
+    axe.set_zlabel("res-value")
+    axe.plot_surface(xs,ys,equation,rstride = 1,cstride = 1)
+    return fig

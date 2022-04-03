@@ -13,7 +13,7 @@ def Get_data(counts,value):
 #生成高维数据集,Unknown是未知参数,data_是数据集,theta.transpose()是实际参数,num数据个数
 def Get_Pro_data(num,Unknown,value):
     data_ = np.zeros((num,Unknown))
-    theta = np.random.randint(1,100,(Unknown,1))
+    theta = np.random.randint(1,10,(Unknown,1))
     res = np.array([])
     for x1 in range(Unknown):
         for x2 in range(num):
