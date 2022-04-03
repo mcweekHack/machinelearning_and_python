@@ -96,7 +96,7 @@ def Dot_map(map_data,res):
     return fig
 #通用梯度优化生成函数,number为未知参数个数,data_为数据集,Acceptance为精度,res为结果,theta是结果
 def gradient_descent(number,data_,res,Acceptance):
-    Alpha = 0.05
+    Alpha = 0.01
     length = data_.shape[0]
     theta = np.zeros((number+1,1))
     onet_ = np.ones((length,1))
@@ -113,7 +113,7 @@ def Result_show(x1,y1,mark):
     xs = np.arange(-10,10,1)
     ys = np.arange(-10,10,1)
     xs,ys = np.meshgrid(xs,ys)
-    equation = xs*x2+ys*y2 + mark
+    equation = xs*x1+ys*y1 + mark
     fig = plt.figure("Prediction function")
     axe = A3D.Axes3D(fig)
     axe.set_xlabel("x1-value")

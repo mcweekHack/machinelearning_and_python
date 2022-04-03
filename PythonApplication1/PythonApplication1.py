@@ -13,7 +13,11 @@ from matplotlib import cm
 #a,b = Fun.equation_Task_up(x,y,z,0.05)#优化的梯度下降
 #Fun.map_Create_Fun(a,b)
 #plt.show()#输出
-[x,y,z] = datam.Get_Pro_data(100,2,1)
-theta = Fun.gradient_descent(2,x,y,0.05)
+[x,y,z] = datam.Get_Pro_data(1000,10,4)
+theta = Fun.gradient_descent(10,x,y,0.05)
 print(z)
 print(theta)
+#theta = theta.transpose()
+#Fun.Result_show(theta[0][0],theta[0][1],theta[0][2])
+#Fun.Dot_map(x,y)
+#plt.show()

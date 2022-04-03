@@ -20,6 +20,6 @@ def Get_Pro_data(num,Unknown,value):
             data_[x2][x1] = np.random.rand()
     res = data_@theta + value
     for x3 in range(num):
-        res[x3][0]+=np.random.rand()*1.5
+        res[x3][0]+=np.random.rand()
     res = res.transpose()
     return data_,res, theta.transpose()
