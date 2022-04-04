@@ -121,3 +121,13 @@ def Result_show(x1,y1,mark):
     axe.set_zlabel("res-value")
     axe.plot_surface(xs,ys,equation,rstride = 1,cstride = 1)
     return fig
+#sigmoid函数绘画
+def Sigmoid_create():
+    xs = np.linspace(-10,10,200)
+    equation = 1/(1+np.power(np.e,-xs))
+    plt.plot(xs,equation)
+    plt.title("Sigmoid_Function")
+    plt.xlabel("x")
+    plt.ylabel("y")
+    plt.show()
+    return 0
