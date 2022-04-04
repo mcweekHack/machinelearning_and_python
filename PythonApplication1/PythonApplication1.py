@@ -21,4 +21,4 @@ from matplotlib import cm
 #Fun.Result_show(theta[0][0],theta[0][1],theta[0][2])
 #Fun.Dot_map(x,y)
 #plt.show()
-Fun.Sigmoid_create()
+

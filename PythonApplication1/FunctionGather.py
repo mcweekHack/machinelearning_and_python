@@ -131,3 +131,17 @@ def Sigmoid_create():
     plt.ylabel("y")
     plt.show()
     return 0
+#Sigmoid三维形态
+def Sigmoid_3D():
+    xs = np.arange(-10,10,1)
+    ys = np.arange(-10,10,1)
+    xs,ys = np.meshgrid(xs,ys)
+    equation = 1/(1+np.power(np.e,xs+ys+1))
+    fig = plt.figure("Sigmoid3D")
+    axe = A3D.Axes3D(fig)
+    axe.set_xlabel("x")
+    axe.set_ylabel("y")
+    axe.set_zlabel("z")
+    axe.plot_surface(xs,ys,equation,rstride = 1,cstride = 1,cmap = cm.coolwarm)
+    plt.show()
+    return 0
