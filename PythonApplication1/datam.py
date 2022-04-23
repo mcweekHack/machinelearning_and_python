@@ -23,3 +23,14 @@ def Get_Pro_data(num,Unknown,value):
         res[x3][0]+=np.random.rand()
     res = res.transpose()
     return data_,res, theta.transpose()
+#生成二项分布的数据值,一部分为一,另一部分为0,mark是随机值,res是数据集
+def Get_Tow_Side_data(num):
+    #y = 3x + 5
+    mark = np.random.uniform(-10,10)
+    res = np.zeros(num)
+    for x in range(num):
+        if num/2+mark >= x:
+            res[x] = 0
+        else:
+            res[x] = 1
+    return res,mark

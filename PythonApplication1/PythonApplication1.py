@@ -21,4 +21,9 @@ from matplotlib import cm
 #Fun.Result_show(theta[0][0],theta[0][1],theta[0][2])
 #Fun.Dot_map(x,y)
 #plt.show()
-Fun.Sigmoid_3D()
+#Fun.Sigmoid_3D()
+#Fun.Sigmoid_create()
+x,y = datam.Get_Tow_Side_data(100)
+print(y)
+Fun.SHow_Two_map(100,x)
+

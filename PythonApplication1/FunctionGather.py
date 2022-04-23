@@ -145,3 +145,12 @@ def Sigmoid_3D():
     axe.plot_surface(xs,ys,equation,rstride = 1,cstride = 1,cmap = cm.coolwarm)
     plt.show()
     return 0
+#可视化二维数据集
+def SHow_Two_map(num,res):
+    fig = plt.figure("Data_set")
+    plt.xlabel("x_value")
+    plt.ylabel("y_value")
+    mart = np.arange(0,num)
+    plt.scatter(mart,res)
+    plt.show()
+    return
