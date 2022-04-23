@@ -26,4 +26,3 @@ from matplotlib import cm
 x,y = datam.Get_Tow_Side_data(100)
 print(y)
 Fun.SHow_Two_map(100,x)
-

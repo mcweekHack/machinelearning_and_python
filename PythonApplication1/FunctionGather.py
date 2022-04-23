@@ -154,3 +154,9 @@ def SHow_Two_map(num,res):
     plt.scatter(mart,res)
     plt.show()
     return
+#分类算法与逻辑回归,num代表数据个数,res代表数据集,返回值为sigmoid函数在y = 0.5时,z的表达式:z = theta1*x + theta2
+def Caluate_clafiy(num,res):
+    theta1 = 0
+    theta2 = 0
+
+    return
