@@ -152,11 +152,31 @@ def SHow_Two_map(num,res):
     plt.ylabel("y_value")
     mart = np.arange(0,num)
     plt.scatter(mart,res)
-    plt.show()
-    return
-#分类算法与逻辑回归,num代表数据个数,res代表数据集,返回值为sigmoid函数在y = 0.5时,z的表达式:z = theta1*x + theta2
+    return fig
+#合作函数,用于代价计算
+def Cost_fun(theta1,theta2,x,y):
+    res = np.log((np.power(np.e,x*theta1+theta2)+1).sum()) - y@(x*theta1+theta2).transpose()
+    return res
+#分类算法与逻辑回归,num代表数据个数,res代表数据集,返回值为sigmoid函数在y = 0.5时,z的表达式:z = theta1*x + theta2,Acceptance表示精确度
 def Caluate_clafiy(num,res):
     theta1 = 0
     theta2 = 0
-
-    return
+    theta1_ = 0
+    theta2_ = 0
+    alpha = 0.01
+    variable = np.arange(0,num)
+    while Cost_fun(theta1,theta2,variable,res)>=Cost_fun(theta1_,theta2_,variable,res):
+        theta1 = theta1_
+        theta2 = theta2_
+        theta1_ = theta1 - alpha*variable@((res*-1+1) - 1/(np.power(np.e,variable*theta1+theta2)+1)).transpose()/num
+        theta2_ = theta2 - alpha*((res*-1+1) - 1/(np.power(np.e,variable*theta1+theta2)+1)).sum()/num
+    return theta1,theta2
+#sigmoid函数检测与显示,num代表数据个数
+def Sigmoid_Show(theta1,theta2,num):
+    xs = np.linspace(1,num,num)
+    equation = 1/(1+np.power(np.e,-1*theta1*xs-theta2))
+    plt.plot(xs,equation)
+    plt.title("CheckFunction")
+    plt.xlabel("x_value")
+    plt.ylabel("y_value")
+    return 
